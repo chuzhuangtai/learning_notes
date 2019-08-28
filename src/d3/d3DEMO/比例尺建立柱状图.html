@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <svg width="960" height="600"></svg>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+    var marge = { top: 60, bottom: 60, left: 60, right: 60 }
+    var dataset = [2.5, 2.1, 1.7, 1.3, 0.9];
+    //定义一个线性比例尺
+    var scaleLinear = d3.scaleLinear()
+        .domain([0, d3.max(dataset)])
+        .range([0, 300]);
+    var svg = d3.select("svg");
+    var g = svg.append("g")
+        .attr("transform", "translate(" + marge.top + "," + marge.left + ")")
+    var reatHeight = 30
+    g.selectAll("rect")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("x", 20)
+        .attr("y", function(d, i) {
+            return i * reatHeight
+        })
+        .attr("width", function(d, i) {
+            return scaleLinear(d) //设置宽，这里使用比例尺
+        })
+        .attr("height", reatHeight - 5)
+        .attr("fill", "blue")
+    </script>
+</body>
+
+</html>

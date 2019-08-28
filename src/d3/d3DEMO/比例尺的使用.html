@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+    //线性比例尺
+    var dataset = [1.2, 2.3, 0.9, 1.5, 3.3];
+    var min = d3.min(dataset) //获取绑定的最小元素
+    var max = d3.max(dataset) //获取绑定的最大元素
+    var scaleLinear = d3.scaleLinear() //创造一个线性比例尺
+                        .domain([min, max]) //输入值
+                        .range([0, 300]) //输出域  相当于将domain中的数据集映射到range的数据集中
+    document.write("scaleLinear(1)输出：" + scaleLinear(1));
+    d3.select("body").append("br"); //换行
+    document.write("scaleLinear(2)输出：" + scaleLinear(2));
+    d3.select("body").append("br");
+    document.write("scaleLinear(3.3)输出：" + scaleLinear(3.3));
+    d3.select("body").append("br");//换行
+
+
+    //序数比例尺
+    var index = [0, 1, 2, 3, 4]
+    var color = ["red", "blue", "yellow", "black", "green"];
+    var scaleOrdinal = d3.scaleOrdinal()        //创造一个序性比例尺
+                        .domain(index)          //输入index
+                        .range(color);          //输出color
+    document.write("scaleOrdinal(1)输出："+scaleOrdinal(1));
+    d3.select("body").append("br");//换行
+    document.write("scaleOrdinal(2)输出："+scaleOrdinal(2));
+    d3.select("body").append("br");
+    document.write("scaleOrdinal(4)输出："+scaleOrdinal(4));
+
+    </script>
+</body>
+
+</html>
